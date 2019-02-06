@@ -50,6 +50,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt("numKey", num);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle bundle) {
+        super.onRestoreInstanceState(bundle);
+
+        num = bundle.getInt("numKey");
+        counter.setText(String.valueOf(num));
+        counter.setTextColor(colors[abs(num%colors.length)]);
 
     }
 
